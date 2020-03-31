@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t ayushm23/node .
   - docker images ayushm23/node
+
+before_deploy:
+  - docker login -u ayushm23 -p y0sh1rules
+
+deploy:
+  provider: script
+  script: docker push ayushm23/node
+  on: 
+    branch: master
